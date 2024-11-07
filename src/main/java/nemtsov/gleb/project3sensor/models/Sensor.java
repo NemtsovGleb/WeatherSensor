@@ -1,5 +1,6 @@
 package nemtsov.gleb.project3sensor.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class Sensor {
     private String name;
 
     @OneToMany(mappedBy = "owner")
+    //@JsonManagedReference
     private List<Measurement> measurements;
 
     public Sensor() {}

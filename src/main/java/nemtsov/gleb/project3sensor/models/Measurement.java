@@ -1,5 +1,6 @@
 package nemtsov.gleb.project3sensor.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +19,7 @@ public class Measurement {
     private boolean raining;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name="sensor_id", referencedColumnName = "id")
     private Sensor owner;
 

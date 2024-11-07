@@ -1,8 +1,11 @@
 package nemtsov.gleb.project3sensor.services;
 
+import nemtsov.gleb.project3sensor.models.Sensor;
 import nemtsov.gleb.project3sensor.repositories.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SensorService {
@@ -14,8 +17,10 @@ public class SensorService {
         this.sensorRepository = sensorRepository;
     }
 
-    public void createSensor(String name) {
+    public List<Sensor> findAll() {return sensorRepository.findAll();}
 
+    public void save(Sensor sensor) {
+        sensorRepository.save(sensor);
     }
 
 }
