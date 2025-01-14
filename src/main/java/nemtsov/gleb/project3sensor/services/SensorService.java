@@ -1,5 +1,6 @@
 package nemtsov.gleb.project3sensor.services;
 
+import nemtsov.gleb.project3sensor.dto.SensorDTO;
 import nemtsov.gleb.project3sensor.models.Sensor;
 import nemtsov.gleb.project3sensor.repositories.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +24,10 @@ public class SensorService {
         sensorRepository.save(sensor);
     }
 
+//    public void save(SensorDTO sensor) {
+//        enrichSensor(sensor);
+//        sensorRepository.save(sensor);
+//    }
+
+    private void enrichSensor(SensorDTO sensor) {}
 }
