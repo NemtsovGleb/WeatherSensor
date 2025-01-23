@@ -3,6 +3,8 @@ package nemtsov.gleb.project3sensor.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "Measurement")
 public class Measurement {
@@ -23,12 +25,34 @@ public class Measurement {
     @JoinColumn(name="sensor_id", referencedColumnName = "id")
     private Sensor owner;
 
+    @Column(name="sensor_name")
+    private String SensorName;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
     public Measurement() {}
 
     public Measurement(boolean raining, int value, Sensor owner) {
         this.raining = raining;
         this.value = value;
         this.owner = owner;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getSensorName() {
+        return SensorName;
+    }
+
+    public void setSensorName(String sensorName) {
+        SensorName = sensorName;
     }
 
     public int getId() {

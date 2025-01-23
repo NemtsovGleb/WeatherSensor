@@ -6,6 +6,7 @@ import nemtsov.gleb.project3sensor.repositories.SensorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -21,13 +22,15 @@ public class SensorService {
     public List<Sensor> findAll() {return sensorRepository.findAll();}
 
     public void save(Sensor sensor) {
+        enrichSensor(sensor);
         sensorRepository.save(sensor);
     }
 
-//    public void save(SensorDTO sensor) {
-//        enrichSensor(sensor);
-//        sensorRepository.save(sensor);
-//    }
+    private void enrichSensor(Sensor sensor) {
+        sensor.setCreatedAt(LocalDateTime.now());
+    }
 
-    private void enrichSensor(SensorDTO sensor) {}
+    public Sensor findByName(String name) {
+        return sensorRepository.findByName(name);
+    }
 }
